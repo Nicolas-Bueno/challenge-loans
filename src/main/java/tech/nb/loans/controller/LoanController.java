@@ -1,6 +1,8 @@
 package tech.nb.loans.controller;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
 import tech.nb.loans.dto.CustomerLoanRequest;
 import tech.nb.loans.dto.CustomerLoanResponse;
 import tech.nb.loans.service.LoanService;
@@ -19,7 +21,7 @@ public class LoanController {
     }
 
     @PostMapping(value = "/customer-loans")
-    public ResponseEntity<CustomerLoanResponse> customerLoans(@RequestBody CustomerLoanRequest loanRequest){
+    public ResponseEntity<CustomerLoanResponse> customerLoans(@RequestBody @Valid CustomerLoanRequest loanRequest){
         var loanResponse = loanService.checkLoanAvailability(loanRequest);
 
         return ResponseEntity.ok(loanResponse);
