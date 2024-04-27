@@ -23,5 +23,14 @@ public class Loan {
         throw new LoanNotAvailableExeception();
     }
             
+    public boolean isConsignatLoanAvailable(){
+        return customer.isIncomeEqualOrHigher(5000);
+    }
+
+    public double getConsignateLoanInterestRate(){
+        if(isConsignatLoanAvailable()) return 2.0;
+
+        throw new LoanNotAvailableExeception();
+    }
     
 }
