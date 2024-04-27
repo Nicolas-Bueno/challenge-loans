@@ -28,6 +28,10 @@ public class LoanService {
             loans.add(new LoanResponse(LoanType.CONSIGNMENT, loan.getConsignateLoanInterestRate()));
         }
 
+        if(loan.isGuaranteedLoanAvailable()){
+            loans.add(new LoanResponse(LoanType.GUARANTEED, loan.getGuaranteedLoanInterestRate()));
+        }
+
         return new CustomerLoanResponse(loanRequest.name(), loans);
     }
 }
